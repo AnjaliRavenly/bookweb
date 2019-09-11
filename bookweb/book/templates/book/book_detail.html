@@ -1,72 +1,139 @@
+{% extends 'base.html' %}
 {% block  content %}
 		<main class="content">
 			<div class="single">
 
-				<section class="trailer">
-					<h3>Trailer</h3>
-					<div class="trailer_frame">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/x73-573aWfs" frameborder="0" allowfullscreen></iframe>
-					</div>
-				</section>
-
-				<section class="movie">
-					<img src="images/9.jpg">
+				<section class="book">
+					<img src="{{object.image.url}}">
 					<ul>
-						<li>Space Between Us</li>
-						<li>The first human born on Mars travels to Earth for the first time, experiencing the wonders of the planet through fresh eyes. He embarks on an adventure with a street smart girl to discover how he came to be.</li>
-						<li><a href="genre.html">Adventure</a>, <a href="genre.html">Drama</a>, <a href="genre.html">Romance</a></li>
-						<li><a href="cast.html">Gary Oldman</a>, <a href="cast.html">Asa Butterfield</a></li>
-						<li>12,000 Views</li>
+						<li>{{object.title }}</li>
+                        <li>Author: {{object.author }}</li>
+                        <li>Publisher: {{object.publisher }}</li>
+                        <li>Date: {{object.data_of_production }}</li>
+						<li>{{object.description}}</li>
+                        <li>Main Characters: {{object.main_characters}}</li>
+                        <li><a href="genre.html">{{object.category}}</a>
+						<li><a href="genre.html">{{object.tags}}</a>
+						<li>{{object.views_count}} Views </li>
 					</ul>
 				</section>
-				<section class="links">
-					<h3>Links</h3>
-					<ul class="dlinks">
-						<li><a>Download</a></li>
-						<li><a href="#">Link1</a></li>
-						<li><a href="#">Link2</a></li>
-						<li><a href="#">Link3</a></li>
-					</ul>
-					<ul class="wlinks">
-						<li><a>Watch</a></li>
-						<li><a href="#">Link1</a></li>
-						<li><a href="#">Link2</a></li>
-						<li><a href="#">Link3</a></li>
-					</ul>
+                {%if object.movie_trailer %}
+                <section class="trailer">
+					<h3>Film Adaptation: </h3>
+					<div class="trailer_frame">
+						<iframe width="560" height="315" src="{{object.movie_trailer}}" frameborder="0" allowfullscreen></iframe>
+					</div>
 				</section>
+                {% endif %}
 
+                {%if object.series %}
 				<section class="related">
-					<h3>Related movies</h3>
-					<div class="relatemovie">
-						<a href="#"><img src="images/2.jpg"></a>
-						<a href="#"><span class="relatedname">John Wick</span></a>
-					</div>
-					<div class="relatemovie">
-						<a href="#"><img src="images/3.jpg"></a>
-						<a href="#"><span class="relatedname">Spider Man Homecoming</span></a>
-					</div>
-					<div class="relatemovie">
-						<a href="#"><img src="images/4.jpg"></a>
-						<a href="#"><span class="relatedname">Beauty and Beast</span></a>
-					</div>
-					<div class="relatemovie">
-						<a href="#"><img src="images/5.jpg"></a>
-						<a href="#"><span class="relatedname">Pirates of the Caribbean: Dead Men Tell No Tales</span></a>
-					</div>
-					<div class="relatemovie">
-						<a href="#"><img src="images/6.jpg"></a>
-						<a href="#"><span class="relatedname">Fifty Shades Darker</span></a>
-					</div>
-					<div class="relatemovie">
-						<a href="#"><img src="images/7.jpg"></a>
-						<a href="#"><span class="relatedname">Transformers</span></a>
-					</div>
+				<div class="books">
+                    <h3>Series: {{object.series }}</h3>
+                    {% if object.series == object.series %}
+                                        <!-- Swiper -->
+                      <div id="series-books" class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for book in book_series %}
+                            <div class="swiper-slide mov">
+                                <a href="">
+                                    <img src="{{book.image.url}}">
+                                    <h2 class="booktitle">{{book.title}}</h2>
+                                </a>
+                            </div>
+                            {% endfor%}
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                      </div>
+                    {% endif %}
+                </div>
+			</section>
+            {% endif %}
 
-				</section>
 
-				<section class="comments">
-					<h3>Comments</h3>
-				</section>
+                {%if object.category %}
+                <section class="related">
+                    <div class="books">
+                        <h3>Other {{object.category }} books: </h3>
+                                            <!-- Swiper -->
+                          <div id="category-books" class="swiper-container">
+                            <div class="swiper-wrapper">
+                                {% for book in book_category %}
+                                    {% if not object.category is object.series %}
+                                    <div class="swiper-slide mov">
+                                        <a href="">
+                                            <img src="{{book.image.url}}">
+                                            <h2 class="booktitle">{{book.title}}</h2>
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                {% empty %}
+                                    <h3>There Are No More Books In This Category</h3>
+                                {% endfor%}
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                          </div>
+                    </div>
+
+			    </section>
+                {% endif %}
+
 			</div>
 		</main>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    <!--html, body {-->
+      <!--position: relative;-->
+      <!--height: 100%;-->
+    <!--}-->
+    <!--body {-->
+      <!--background: #eee;-->
+      <!--font-family: Helvetica Neue, Helvetica, Arial, sans-serif;-->
+      <!--font-size: 14px;-->
+      <!--color:#000;-->
+      <!--margin: 0;-->
+      <!--padding: 0;-->
+    <!--}-->
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      <!--text-align: center;-->
+      <!--font-size: 18px;-->
+      <!--background: #fff;-->
+      <!--/* Center slide text vertically */-->
+      <!--display: flex;-->
+      <!--align-items: center;-->
+    }
+  </style>
+{% endblock %}
+
+{% block  scripts %}
+
+ <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('#series-books', {
+      slidesPerView: 5,
+      spaceBetween: 30,
+      freeMode: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+    var swiper = new Swiper('#category-books', {
+      slidesPerView: 5,
+      spaceBetween: 30,
+      freeMode: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
 {% endblock %}

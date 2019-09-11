@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Movies</title>
+	<title>Books</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 	<!-- Link Swiper's CSS -->
@@ -13,45 +13,30 @@
 	<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 	<script src="{% static 'js/script.js'%}"></script>
 
-
-	<!-- Demo styles -->
-	<style>
-
+	{% block  styles %}
+	{% endblock %}
 
 
-	</style>
 </head>
 <body>
 	<div class="wrapper">
 
 		<header class="header">
-			<figure class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo"></figure></a>
+			<figure class="logo"><a href="index.html"><img src="{% static 'img/logo.png'%}" alt="Logo"></figure></a>
 			<nav class="menu">
 				<ul>
 					<li><a href="index.html">Home</a></li>
-					<li><a>Genres</a>
+					<li><a>Category</a>
 						<ul>
-							<li><a href="genre.html">Action</a></li>
-							<li><a href="genre.html">Comedy</a></li>
-							<li><a href="genre.html">Drama</a></li>
+							<li><a href="genre.html">Fantasy</a></li>
+							<li><a href="genre.html">Sci_fi</a></li>
+							<li><a href="genre.html">Biographies</a></li>
 							<li><a href="genre.html">Romance</a></li>
+							<li><a href="genre.html">thrillers</a></li>
+
 						</ul>
 					</li>
-					<li><a>Year</a>
-						<ul>
-							<li><a href="year.html">2017</a></li>
-							<li><a href="year.html">2016</a></li>
-							<li><a href="year.html">2015</a></li>
-							<li><a href="year.html">2014</a></li>
-						</ul>
-					</li>
-					<li><a>Language</a>
-						<ul>
-							<li><a href="language.html">English</a></li>
-							<li><a href="language.html">German</a></li>
-						</ul>
-					</li>
-					<li><a href="mostwatched.html">Most Watched</a></li>
+					<li><a href="mostwatched.html">Authors</a></li>
 					<li class="mobsearch">
 						<form class="mobform">
 							<input type="text" name="s" class="mobsearchfield" placeholder="Search...">
@@ -132,9 +117,13 @@
 			</div>
 
 		</footer>
+	</div>
 
-		<!-- Swiper JS -->
-		<script src="js/swiper.min.js"></script>
+<!-- Swiper JS -->
+		<script src="{% static 'js/swiper.min.js'%}"></script>
+
+		{% block scripts %}
+        {% endblock %}
 
 		<!-- Initialize Swiper -->
 		<script>
@@ -259,8 +248,5 @@
 
 
 		</script>
-
-
-	</div>
 </body>
 </html>
