@@ -18,7 +18,7 @@ class Book(models.Model):
     publisher = models.CharField(max_length=100)
     image = models.ImageField(upload_to='books')
     data_of_production = models.DateField()
-    category = category = models.CharField(choices=CATEGORY_BOOKS, max_length=15)
+    category = models.CharField(choices=CATEGORY_BOOKS, max_length=15)
     description = models.TextField(max_length=1000)
     main_characters = models.CharField(max_length=200)
     series = models.CharField(max_length=100, blank=True)

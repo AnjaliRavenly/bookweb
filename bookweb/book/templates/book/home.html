@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+
+<div class="homeslider">
+			<div class="swiper-container">
+
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="{% static 'img/banner.jpg'%}">
+						<div class="caption">
+							<div class="captioninside">
+								<h3>BookWeb</h3>
+								<p>Description of a thousand books in one place</p>
+							</div>
+						</div>
+					</div>
+
+				<!-- Add Pagination -->
+				<!--<div class="swiper-pagination"></div>-->
+			</div>
+		</div>
+
+{% endblock %}
