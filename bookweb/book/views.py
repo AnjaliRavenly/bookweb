@@ -7,11 +7,19 @@ from django.db.models import Q
 class HomeView(ListView):
     model = Book
     template_name = 'book/home.html'
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context["new_book"] = Book.objects.all().order_by("-data_of_production")
+        context["popular_book"] = Book.objects.all().order_by("-views_count")
+        return context
 
 
 class BookList(ListView):
     model = Book
     paginate_by = 5
+
 
 class BookDetail(DetailView):
     model = Book
@@ -48,10 +56,10 @@ class BookSearch(ListView):
     model = Book
     paginate_by = 5
 
-    def get_queryset(self):
-        query = self.request.GET.get('query')
-        if query:
-            object_list = self.model.objects.filter(Q(title__icontains=query) | (Q(author__icontains=query)))
-        else:
-            object_list = self.model.objects.none()
-        return object_list
+    # def get_queryset(self):
+    #     query = self.request.GET.get('query')
+    #     if query:
+    #         object_list = self.model.objects.filter(Q(title__icontains=query) | (Q(author__icontains=query)))
+    #     else:
+    #         object_list = self.model.objects.none()
+    #     return object_list

@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import BookList, BookDetail, BookCategory, BookSearch
 
 urlpatterns = [
@@ -7,3 +8,5 @@ urlpatterns = [
     path('search/', BookSearch.as_view(), name='book_search'),
     path('<slug:slug>', BookDetail.as_view(), name='book_detail'),
 ]
+
+

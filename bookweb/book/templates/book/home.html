@@ -1,24 +1,56 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block  content %}
+<main class="content">
+	<div class="homeslider">
+				<div class="swiper-container">
 
-<div class="homeslider">
-			<div class="swiper-container">
-
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<img src="{% static 'img/banner.jpg'%}">
-						<div class="caption">
-							<div class="captioninside">
-								<h3>BookWeb</h3>
-								<p>Description of a thousand books in one place</p>
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="{% static 'img/banner.jpg'%}">
+							<div class="caption">
+								<div class="captioninside">
+									<h3>BookWeb</h3>
+									<p>Description of a thousand books in one place</p>
+								</div>
 							</div>
 						</div>
-					</div>
 
-				<!-- Add Pagination -->
-				<!--<div class="swiper-pagination"></div>-->
+					<!-- Add Pagination -->
+					<!--<div class="swiper-pagination"></div>-->
+				</div>
 			</div>
-		</div>
-
+		<section class="panel">
+					<h2>New</h2>
+					<div class="mostslider">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								{% for book in new_book %}
+									<div class="swiper-slide mov">
+									<a href="{% url 'books:book_detail' book.slug %}">
+										<img src="{{book.image.url}}">
+										<h2 class="booktitle">{{book.title}}</h2>
+									</a>
+								</div>
+								{% endfor %}
+							</div>
+					<h2>Popular</h2>
+					<div class="mostslider">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								{% for book in popular_book %}
+									<div class="swiper-slide mov">
+									<a href="{% url 'books:book_detail' book.slug %}">
+										<img src="{{book.image.url}}">
+										<h2 class="booktitle">{{book.title}}</h2>
+									</a>
+								</div>
+								{% endfor %}
+							</div>
+							<!-- Add Pagination -->
+						</div>
+					</div>
+		</section>
+	</div>
+</main>
 {% endblock %}

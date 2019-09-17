@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 from book.views import HomeView
 
 
-
 urlpatterns = [
     path('', HomeView.as_view()),
     path('admin/', admin.site.urls),
