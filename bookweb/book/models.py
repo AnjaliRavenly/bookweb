@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 import json
 
-# Create your models here.
+
 
 class Author(models.Model):
     author = models.CharField(max_length=100)

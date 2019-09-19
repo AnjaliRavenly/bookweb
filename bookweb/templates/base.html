@@ -36,10 +36,10 @@
 
 						</ul>
 					</li>
-					<li><a href="author_list.html">Authors</a></li>
+					<li><a href="{% url 'books:author_list'%}">Authors</a></li>
 					<li class="mobsearch">
-						<form class="mobform">
-							<input type="text" name="s"  class="mobsearchfield" placeholder="Search...">
+						<form class="mobform", method="GET">
+							<input type="text" name="query" value="{{ request.GET.q}}" class="mobsearchfield" placeholder="Search...">
 							<input type="submit" value="" class="mobsearchsubmit">
 						</form>
 					</li>

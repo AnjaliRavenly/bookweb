@@ -34,6 +34,7 @@ class BookDetail(DetailView):
         context = super(BookDetail, self).get_context_data(**kwargs)
         context['book_series'] = Book.objects.filter(series=self.get_object().series)
         context['book_category'] = Book.objects.filter(category=self.get_object().category).filter(~Q(series=self.get_object().series))
+        print(context['book_series'])
         return context
 
 
@@ -59,7 +60,7 @@ class BookSearch(ListView):
     def get_queryset(self):
         query = self.request.GET.get('query')
         if query:
-            object_list = self.model.objects.filter(Q(title__icontains=query) | (Q(author__icontains=query)))
+            object_list = self.model.objects.filter(Q(title__icontains=query) | (Q(author__author__icontains=query)))
         else:
             object_list = self.model.objects.none()
         return object_list
@@ -67,7 +68,19 @@ class BookSearch(ListView):
 
 class AuthorList(ListView):
     model = Author
+    paginate_by = 5
     template_name = 'book/author_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(AuthorList, self).get_context_data(**kwargs)
+        # context["author_list"] = Author.objects.all().order_by("author")
+        return context
+
 
 class AuthorDetail(DetailView):
     model = Author
+    def get_context_data(self, **kwargs):
+        context = super(AuthorDetail, self).get_context_data(**kwargs)
+        context['author_books'] = Book.objects.filter(author=self.get_object())
+        print("książki autora", context['author_books'])
+        return context
