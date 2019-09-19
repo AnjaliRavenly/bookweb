@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Book
+from .models import Book, Author
 from django.db.models import Q
 # Create your views here.
 
@@ -23,11 +23,11 @@ class BookList(ListView):
 
 class BookDetail(DetailView):
     model = Book
-    # def get_object(self, queryset=None):
-    #     object = super(BookDetail, self).get_object()
-    #     object.views_count += 1
-    #     object.save()
-    #     return object
+    def get_object(self, queryset=None):
+        object = super(BookDetail, self).get_object()
+        object.views_count += 1
+        object.save()
+        return object
 
 
     def get_context_data(self, **kwargs):
@@ -56,10 +56,18 @@ class BookSearch(ListView):
     model = Book
     paginate_by = 5
 
-    # def get_queryset(self):
-    #     query = self.request.GET.get('query')
-    #     if query:
-    #         object_list = self.model.objects.filter(Q(title__icontains=query) | (Q(author__icontains=query)))
-    #     else:
-    #         object_list = self.model.objects.none()
-    #     return object_list
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        if query:
+            object_list = self.model.objects.filter(Q(title__icontains=query) | (Q(author__icontains=query)))
+        else:
+            object_list = self.model.objects.none()
+        return object_list
+
+
+class AuthorList(ListView):
+    model = Author
+    template_name = 'book/author_list.html'
+
+class AuthorDetail(DetailView):
+    model = Author

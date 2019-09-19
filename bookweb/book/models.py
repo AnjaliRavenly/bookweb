@@ -1,7 +1,26 @@
 from django.db import models
 from django.utils.text import slugify
+import json
 
 # Create your models here.
+
+class Author(models.Model):
+    author = models.CharField(max_length=100)
+    date_of_birth = models.DateField()
+    date_of_death = models.DateField(null=True, blank=True)
+    nationality = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='authors')
+    description = models.TextField(max_length=1000)
+    slug = models.SlugField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.author)
+        super(Author, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.author
+
 
 CATEGORY_BOOKS = {
     ("fantasy", "FANTASY"),
@@ -14,7 +33,7 @@ CATEGORY_BOOKS = {
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
-    author = models.CharField(max_length=100)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     publisher = models.CharField(max_length=100)
     image = models.ImageField(upload_to='books')
     data_of_production = models.DateField()
@@ -36,5 +55,7 @@ class Book(models.Model):
 
 
     def __str__(self):
-        return self.title+ " - " + str(self.author)
+        return self.title
+
+
 
