@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from django.views.generic.list import MultipleObjectMixin
 from .models import Book, Author
 from django.db.models import Q
 # Create your views here.
@@ -32,9 +33,9 @@ class BookDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BookDetail, self).get_context_data(**kwargs)
-        context['book_series'] = Book.objects.filter(series=self.get_object().series)
-        context['book_category'] = Book.objects.filter(category=self.get_object().category).filter(~Q(series=self.get_object().series))
-        print(context['book_series'])
+        context['book_series'] = Book.objects.filter(Q(series=self.get_object().series))
+        context['book_category'] = Book.objects.filter(~Q(series=self.get_object().series)).filter(Q(category=self.get_object().category))
+        print(context['book_category'])
         return context
 
 
@@ -46,11 +47,6 @@ class BookCategory(ListView):
     def get_queryset(self):
         self.category = self.kwargs['category']
         return Book.objects.filter(category=self.category)
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(BookCategory, self).get_context_data(**kwargs)
-        context["book_category"] = self.category
-        return context
 
 
 class BookSearch(ListView):
@@ -71,14 +67,10 @@ class AuthorList(ListView):
     paginate_by = 5
     template_name = 'book/author_list.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(AuthorList, self).get_context_data(**kwargs)
-        # context["author_list"] = Author.objects.all().order_by("author")
-        return context
-
 
 class AuthorDetail(DetailView):
     model = Author
+
     def get_context_data(self, **kwargs):
         context = super(AuthorDetail, self).get_context_data(**kwargs)
         context['author_books'] = Book.objects.filter(author=self.get_object())

@@ -111,7 +111,13 @@ body{font-family: arial,sans-serif; background-color: #191919; position: relativ
 .comments h3{float:left;padding: 0 10px; margin-bottom: 10px; color:#fff;    padding: 0 10px;}
 
 .related{float: left;width: calc(100% - 20px); margin:0 0 20px 0;background-color: #202020;padding: 10px; box-shadow: 0px 1px 2px rgba(0,0,0, 0.3);}
-.related h3{float:left;padding: 0 10px; margin-bottom: 10px; color:#fff; width: calc(100% - 20px)}
+.related h3{
+    //float:left;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    color:#fff;
+    width: calc(100% - 20px)
+}
 .relatebook{float: left;width: calc(16.6% - 15px); margin: 0 5px 10px 10px; position: relative;}
 .relatebook img{max-width: 100%; width: 100%;}
 .relatedname{position: absolute;bottom: 3px; left: 0;right: 0; background-color:rgba(0,0,0,0.8); padding: 5px 10px;line-height: 1.4;font-size: 14px; }
@@ -180,4 +186,10 @@ body{font-family: arial,sans-serif; background-color: #191919; position: relativ
 	.book{text-align:center;}
 	.book ul{float: none; width: 100%; text-align: center; margin:10px 0;}
 	.book ul li{float: none;}
+}
+
+.cf::after {
+  content: "";
+  display: table;
+  clear: both;
 }

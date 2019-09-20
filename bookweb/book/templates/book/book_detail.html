@@ -1,87 +1,88 @@
 {% extends 'base.html' %}
 {% block  content %}
-		<main class="content">
-			<div class="single">
+<main class="content">
+    <div class="single">
 
-				<section class="book">
-					<img src="{{object.image.url}}">
-					<ul>
-						<li>{{object.title }}</li>
-                        <li>Author: {{object.author }}</li>
-                        <li>Publisher: {{object.publisher }}</li>
-                        <li>Date: {{object.data_of_production }}</li>
-						<li>{{object.description}}</li>
-                        <li>Main Characters: {{object.main_characters}}</li>
-                        <li><a href="{% url 'books:book_category' book.category %}">{{object.category}}</a>
-						<li><a href="/">{{object.tags}}</a>
-						<li>{{object.views_count}} Views </li>
-					</ul>
-				</section>
-                {%if object.movie_trailer %}
-                <section class="trailer">
-					<h3>Film Adaptation: </h3>
-					<div class="trailer_frame">
-						<iframe width="560" height="315" src="{{object.movie_trailer}}" frameborder="0" allowfullscreen></iframe>
-					</div>
-				</section>
-                {% endif %}
+        <section class="book">
+            <img src="{{object.image.url}}">
+            <ul>
+                <li>{{object.title }}</li>
+                <li><a href="{% url 'books:author_detail' book.author.slug %}">Author: {{object.author }}</a></li>
+                <li>Publisher: {{object.publisher }}</li>
+                <li>Date: {{object.data_of_production }}</li>
+                <li>{{object.description}}</li>
+                <li>Main Characters: {{object.main_characters}}</li>
+                <li><a href="{% url 'books:book_category' book.category %}">{{object.category}}</a>
+<!--                <li><a href="/">{{object.tags}}</a>-->
+                <li>{{object.views_count}} Views</li>
+            </ul>
+        </section>
+        {%if object.movie_trailer %}
+        <section class="trailer">
+            <h3>Film Adaptation: </h3>
+            <div class="trailer_frame">
+                <iframe width="560" height="315" src="{{object.movie_trailer}}" frameborder="0"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+        {% endif %}
 
-                {%if object.series %}
-				<section class="related">
-				<div class="books">
-                    <h3>Series: {{object.series }}</h3>
-                                        <!-- Swiper -->
-                      <div id="series-books" class="swiper-container">
-                        <div class="swiper-wrapper">
-                            {% for book in book_series %}
-                            <div class="swiper-slide mov">
-                                <a href="{% url 'books:book_detail' book.slug %}">
-                                    <img src="{{book.image.url}}">
-                                    <h2 class="booktitle">{{book.title}}</h2>
-                                </a>
-                            </div>
-                            {% endfor%}
+        {%if object.series %}
+        <section class="related">
+            <div class="books">
+                <h3>Series: {{object.series }}</h3>
+                <!-- Swiper -->
+                <div id="series-books" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for book in book_series %}
+                        <div class="swiper-slide mov">
+                            <a href="{% url 'books:book_detail' book.slug %}">
+                                <img src="{{book.image.url}}">
+                                <h2 class="booktitle">{{book.title}}</h2>
+                            </a>
                         </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                      </div>
-                </div>
-
-			</section>
-            {% endif %}
-
-                {%if object.category %}
-                <section class="related">
-                    <div class="books">
-                        <h3>Other {{object.category }} books: </h3>
-                                            <!-- Swiper -->
-                          <div id="category-books" class="swiper-container">
-                            <div class="swiper-wrapper">
-                                {% for book in book_category %}
-                                    <div class="swiper-slide mov">
-                                        <a href="{% url 'books:book_detail' book.slug %}">
-                                            <img src="{{book.image.url}}">
-                                            <h2 class="booktitle">{{book.title}}</h2>
-                                        </a>
-                                    </div>
-                                {% empty %}
-                                    <h3>Actually there are no books in this category</h3>
-                                {% endfor%}
-                            </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination"></div>
-                          </div>
+                        {% endfor%}
                     </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
 
-			    </section>
-                {% endif %}
+        </section>
+        {% endif %}
 
-			</div>
-		</main>
+        {%if object.category %}
+        <section class="related">
+            <div class="books">
+                <h3>Other {{object.category }} books: </h3>
+                <!-- Swiper -->
+                <div id="category-books" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for book in book_category %}
+                        <div class="swiper-slide mov">
+                            <a href="{% url 'books:book_detail' book.slug %}">
+                                <img src="{{book.image.url}}">
+                                <h2 class="booktitle">{{book.title}}</h2>
+                            </a>
+                        </div>
+                        {% empty %}
+                        <h3>Actually there are no books in this category</h3>
+                        {% endfor%}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+        </section>
+        {% endif %}
+
+    </div>
+</main>
 {% endblock %}
 
 {% block styles %}
-  <style>
+<style>
     <!--html, body {-->
       <!--position: relative;-->
       <!--height: 100%;-->
@@ -106,13 +107,14 @@
       <!--display: flex;-->
       <!--align-items: center;-->
     }
-  </style>
+
+</style>
 {% endblock %}
 
 {% block  scripts %}
 
- <!-- Initialize Swiper -->
-  <script>
+<!-- Initialize Swiper -->
+<script>
     var swiper = new Swiper('#series-books', {
       slidesPerView: 5,
       spaceBetween: 30,
@@ -131,5 +133,6 @@
         clickable: true,
       },
     });
-  </script>
+
+</script>
 {% endblock %}

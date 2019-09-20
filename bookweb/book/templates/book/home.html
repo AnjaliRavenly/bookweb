@@ -2,55 +2,214 @@
 {% load static %}
 {% block  content %}
 <main class="content">
-	<div class="homeslider">
-				<div class="swiper-container">
+    <div class="homeslider">
+        <div class="swiper-container">
 
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="{% static 'img/banner.jpg'%}">
-							<div class="caption">
-								<div class="captioninside">
-									<h3>BookWeb</h3>
-									<p>Description of a thousand books in one place</p>
-								</div>
-							</div>
-						</div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{% static 'img/banner.jpg'%}">
+                    <div class="caption">
+                        <div class="captioninside">
+                            <h3>BookWeb</h3>
+                            <p>Description of a thousand books in one place</p>
+                        </div>
+                    </div>
+                </div>
 
-					<!-- Add Pagination -->
-					<!--<div class="swiper-pagination"></div>-->
-				</div>
-			</div>
-		<section class="panel">
-					<h2>New</h2>
-					<div class="mostslider">
-						<div class="swiper-container">
-							<div class="swiper-wrapper">
-								{% for book in new_book %}
-									<div class="swiper-slide mov">
-									<a href="{% url 'books:book_detail' book.slug %}">
-										<img src="{{book.image.url}}">
-										<h2 class="booktitle">{{book.title}}</h2>
-									</a>
-								</div>
-								{% endfor %}
-							</div>
-					<h2>Popular</h2>
-					<div class="mostslider">
-						<div class="swiper-container">
-							<div class="swiper-wrapper">
-								{% for book in popular_book %}
-									<div class="swiper-slide mov">
-									<a href="{% url 'books:book_detail' book.slug %}">
-										<img src="{{book.image.url}}">
-										<h2 class="booktitle">{{book.title}}</h2>
-									</a>
-								</div>
-								{% endfor %}
-							</div>
-							<!-- Add Pagination -->
-						</div>
-					</div>
-		</section>
-	</div>
+                <!-- Add Pagination -->
+            </div>
+        </div>
+        <section class="panel">
+            <h2>New</h2>
+            <div id="new-books-slider" class="mostslider">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for book in new_book %}
+                        <div class="swiper-slide mov">
+                            <a href="{% url 'books:book_detail' book.slug %}">
+                                <img src="{{book.image.url}}">
+                                <h2 class="booktitle">{{book.title}}</h2>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <h2>Popular</h2>
+
+            <div id="popular-books-slider" class="mostslider">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for book in popular_book %}
+                        <div class="swiper-slide mov">
+                            <a href="{% url 'books:book_detail' book.slug %}">
+                                <img src="{{book.image.url}}">
+                                <h2 class="booktitle">{{book.title}}</h2>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Add Pagination -->
+                </div>
+            </div>
+        </section>
+    </div>
 </main>
+{% endblock %}
+
+{% block  scripts %}
+
+<!-- Initialize Swiper -->
+<script>
+   $(document).ready(function(){
+				var swiper = new Swiper('.homeslider > .swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					preventClicks:false,
+					preventClicksPropagation:false,
+					effect:'fade',
+					breakpoints: {
+						320: {
+							height:200
+						},
+
+						480: {
+							height:300
+						},
+
+						768: {
+							height:400
+						},
+						1024: {
+							height:500
+						}
+					}
+				});
+
+				var recentswiper = new Swiper('.recentslider > .swiper-container', {
+					nextButton: '.recent-next',
+					prevButton: '.recent-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks:false,
+					preventClicksPropagation:false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+
+
+				var mostswiper = new Swiper('#new-books-slider > .swiper-container', {
+					nextButton: '.most-next',
+					prevButton: '.most-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks:false,
+					preventClicksPropagation:false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+				var mostswiper = new Swiper('#popular-books-slider > .swiper-container', {
+					nextButton: '.most-next',
+					prevButton: '.most-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks:false,
+					preventClicksPropagation:false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+				var topswiper = new Swiper('.topslider > .swiper-container', {
+					nextButton: '.top-next',
+					prevButton: '.top-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks:false,
+					preventClicksPropagation:false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+			});
+
+</script>
 {% endblock %}
