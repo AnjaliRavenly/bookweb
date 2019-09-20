@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block  content %}
+
+<main class="content">
+    <div class="single cf">
+
+        <section class="book cf">
+            <img src="{{object.image.url}}">
+            <ul>
+                <li>{{object.author }}</li>
+                <li>Date of birth: {{object.date_of_birth }}</li>
+                {% if object.date_of_death%}
+                <li>Date of death: {{object.date_of_death }}</li>
+                {% endif%}
+                <li>Nationality: {{object.nationality }}</li>
+                <li>{{object.description}}</li>
+
+            </ul>
+        </section>
+
+        {%if author_books %}
+        <section class="related cf">
+            <div class="books cf">
+                <h3>Books: </h3>
+                <!-- Swiper -->
+                <div id="authors-books" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for book in author_books %}
+                        <div class="swiper-slide mov">
+                            <a href="{% url 'books:book_detail' book.slug %}">
+                                <img src="{{book.image.url}}">
+                                <h2 class="booktitle">{{book.title}}</h2>
+                            </a>
+                        </div>
+                        {% empty %}
+                        <h3>Actually there are no books in this category</h3>
+                        {% endfor%}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+        </section>
+        {% endif %}
+
+    </div>
+</main>
+
+{% endblock %}
+
+{% block  scripts %}
+<!-- Initialize Swiper -->
+<script>
+ $(document).ready(function(){
+    var swiper = new Swiper(
+        '#authors-books',
+         {
+          slidesPerView: 5,
+          spaceBetween: 30,
+          freeMode: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+        }
+    );
+ });
+
+</script>
+{% endblock %}
