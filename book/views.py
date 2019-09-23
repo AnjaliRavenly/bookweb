@@ -8,7 +8,6 @@ from django.db.models import Q
 class HomeView(ListView):
     model = Book
     template_name = 'book/home.html'
-    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -33,9 +32,15 @@ class BookDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BookDetail, self).get_context_data(**kwargs)
-        context['book_series'] = Book.objects.filter(Q(series=self.get_object().series))
-        context['book_category'] = Book.objects.filter(~Q(series=self.get_object().series)).filter(Q(category=self.get_object().category))
-        print(context['book_category'])
+
+        context['book_series'] = Book.objects.filter(Q(series=self.get_object().series)).filter(~Q(series=""))
+
+        if Book.objects.filter(Q(series=self.get_object().series)).filter(~Q(series="")):
+            context['book_category'] = Book.objects.filter(Q(category=self.get_object().category)).exclude(
+                Q(series=self.get_object().series))
+        else:
+            context['book_category'] = Book.objects.filter(Q(category=self.get_object().category))
+
         return context
 
 
@@ -74,5 +79,4 @@ class AuthorDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(AuthorDetail, self).get_context_data(**kwargs)
         context['author_books'] = Book.objects.filter(author=self.get_object())
-        print("książki autora", context['author_books'])
         return context
