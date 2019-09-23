@@ -1,4 +1,4 @@
-# Python: Getting Started
+# Bookweb on Django
 
 A barebones Django app, which can easily be deployed to Heroku.
 
@@ -13,12 +13,10 @@ $ cd python-getting-started
 $ python3 -m venv getting-started
 $ pip install -r requirements.txt
 
-$ createdb python_getting_started
-
 $ python manage.py migrate
 $ python manage.py collectstatic
 
-$ heroku local
+$ heroku local web -f Procfile.windows
 ```
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
