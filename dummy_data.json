@@ -130,7 +130,7 @@
       "main_characters": "Anastasia Steele,  Christian Grey",
       "series": "Fifty Shades of Grey Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=SfZWFDs0LxA",
+      "movie_trailer": "https://www.youtube.com/embed/SfZWFDs0LxA",
       "tags": "BDSM, multimillionaire,",
       "views_count": 0,
       "slug": "fifty-shades-of-grey"
@@ -150,7 +150,7 @@
       "main_characters": "Anastasia Steele,  Christian Grey",
       "series": "Fifty Shades of Grey Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=TUnylyz5mqQ",
+      "movie_trailer": "https://www.youtube.com/embed/TUnylyz5mqQ",
       "tags": "BDSM, multimillionaire,",
       "views_count": 168,
       "slug": "fifty-shades-darker"
@@ -170,7 +170,7 @@
       "main_characters": "Anastasia Steele,  Christian Grey",
       "series": "Fifty Shades of Grey Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=nJCc5HRPxYA",
+      "movie_trailer": "https://www.youtube.com/embed/nJCc5HRPxYA",
       "tags": "BDSM, multimillionaire,",
       "views_count": 24,
       "slug": "fifty-shades-freed"
@@ -190,7 +190,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Profesor Dumbledore",
       "series": "Harry Potter Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=VyHV0BRtdxo",
+      "movie_trailer": "https://www.youtube.com/embed/VyHV0BRtdxo",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 20,
       "slug": "harry-potter-and-the-sorcerers-stone"
@@ -210,7 +210,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Dobby",
       "series": "Harry Potter Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=1bq0qff4iF8",
+      "movie_trailer": "https://www.youtube.com/embed/1bq0qff4iF8",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 40,
       "slug": "harry-potter-and-the-chamber-of-secrets"
@@ -230,7 +230,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Sirius Black",
       "series": "Harry Potter Series",
       "film_adaptation": false,
-      "movie_trailer": "https://www.youtube.com/watch?v=lAxgztbYDbs",
+      "movie_trailer": "https://www.youtube.com/embed/lAxgztbYDbs",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 8,
       "slug": "harry-potter-and-the-prisoner-of-azkaban"
@@ -250,7 +250,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Profesor Dumbledore",
       "series": "Harry Potter Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=3EGojp4Hh6I",
+      "movie_trailer": "https://www.youtube.com/embed/3EGojp4Hh6I",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 0,
       "slug": "harry-potter-and-the-goblet-of-fire"
@@ -270,7 +270,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Sirius Black Profesor Dumbledore",
       "series": "Harry Potter Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=y6ZW7KXaXYk",
+      "movie_trailer": "https://www.youtube.com/embed/y6ZW7KXaXYk",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 48,
       "slug": "harry-potter-and-the-order-of-the-phoenix"
@@ -290,7 +290,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Profesor Snape",
       "series": "Harry Potter Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=sg81Lts5kYY",
+      "movie_trailer": "https://www.youtube.com/embed/sg81Lts5kYY",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 0,
       "slug": "harry-potter-and-the-half-blood-prince"
@@ -310,7 +310,7 @@
       "main_characters": "Harry Potter, Ron Weasley, Hermiona Granger, Voldemort",
       "series": "Harry Potter Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=9hXH0Ackz6w",
+      "movie_trailer": "https://www.youtube.com/embed/9hXH0Ackz6w",
       "tags": "Wizard, Magic, magical school,",
       "views_count": 8,
       "slug": "harry-potter-and-the-deathly-hallows"
@@ -330,7 +330,7 @@
       "main_characters": "Kris Kelvin",
       "series": "",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=rvm7WMbXfeY",
+      "movie_trailer": "https://www.youtube.com/embed/rvm7WMbXfeY",
       "tags": "space exploration, space station, cosmonaut",
       "views_count": 20,
       "slug": "solaris"
@@ -410,7 +410,7 @@
       "main_characters": "Howard Mollison, Shirley Mollison",
       "series": "",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=VUGuQoL1TZg",
+      "movie_trailer": "https://www.youtube.com/embed/VUGuQoL1TZg",
       "tags": "small town, politics",
       "views_count": 4,
       "slug": "the-casual-vacancy"
@@ -430,7 +430,7 @@
       "main_characters": "Lisbeth Salander, Mikael Blomkvist",
       "series": "Millennium Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=rIrjgFphVIc",
+      "movie_trailer": "https://www.youtube.com/embed/rIrjgFphVIc",
       "tags": "journalist, hackergirl,  hacker",
       "views_count": 16,
       "slug": "the-girl-with-the-dragon-tattoo"
@@ -450,7 +450,7 @@
       "main_characters": "Lisbeth Salander, Mikael Blomkvist",
       "series": "Millennium Series",
       "film_adaptation": true,
-      "movie_trailer": "https://youtu.be/oSsodK7KFXQ",
+      "movie_trailer": "https://www.youtube.com/embed/oSsodK7KFXQ",
       "tags": "journalist, hackergirl,  hacker",
       "views_count": 4,
       "slug": "the-girl-who-played-with-fire"
@@ -470,7 +470,7 @@
       "main_characters": "Lisbeth Salander, Mikael Blomkvist",
       "series": "Millennium Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=vVGbPFdU96A",
+      "movie_trailer": "https://www.youtube.com/embed/vVGbPFdU96A",
       "tags": "journalist, hackergirl,  hacker",
       "views_count": 4,
       "slug": "the-girl-who-kicked-the-hornets-nest"
@@ -530,7 +530,7 @@
       "main_characters": "Wade Watts",
       "series": "Ready Player One Series",
       "film_adaptation": true,
-      "movie_trailer": "https://www.youtube.com/watch?v=cSp1dM2Vj48",
+      "movie_trailer": "https://www.youtube.com/embed/cSp1dM2Vj48",
       "tags": "computer game, feature, playing game",
       "views_count": 4,
       "slug": "ready-player-one"
