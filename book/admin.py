@@ -3,7 +3,6 @@ from django.contrib import admin
 # Register your models here.
 from .models import Book, Author
 
-
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'series')
@@ -13,5 +12,3 @@ class BookAdmin(admin.ModelAdmin):
 
 # admin.site.register(Book)
 admin.site.register(Author)
-
-

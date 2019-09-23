@@ -1,16 +1,15 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.views.generic.list import MultipleObjectMixin
 from .models import Book, Author
-from django.db.models import Q
+from django.db.models import Q, F
 # Create your views here.
+
 
 class HomeView(ListView):
     model = Book
     template_name = 'book/home.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["new_book"] = Book.objects.all().order_by("-data_of_production")
         context["popular_book"] = Book.objects.all().order_by("-views_count")
         return context
@@ -23,15 +22,16 @@ class BookList(ListView):
 
 class BookDetail(DetailView):
     model = Book
-    def get_object(self, queryset=None):
-        object = super(BookDetail, self).get_object()
-        object.views_count += 1
-        object.save()
-        return object
 
+    def get_object(self, queryset=None):
+        book_object = super().get_object()
+        book_object.view_count = F('view_count') + 1
+        book_object.save()
+
+        return book_object
 
     def get_context_data(self, **kwargs):
-        context = super(BookDetail, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
 
         context['book_series'] = Book.objects.filter(Q(series=self.get_object().series)).filter(~Q(series=""))
 
@@ -47,7 +47,6 @@ class BookDetail(DetailView):
 class BookCategory(ListView):
     model = Book
     paginate_by = 5
-
 
     def get_queryset(self):
         self.category = self.kwargs['category']
