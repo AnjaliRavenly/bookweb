@@ -56,6 +56,7 @@ class BookCategory(ListView):
 class BookSearch(ListView):
     model = Book
     paginate_by = 5
+    template_name = 'book/search.html'
 
     def get_queryset(self):
         query = self.request.GET.get('query')
@@ -76,6 +77,6 @@ class AuthorDetail(DetailView):
     model = Author
 
     def get_context_data(self, **kwargs):
-        context = super(AuthorDetail, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['author_books'] = Book.objects.filter(author=self.get_object())
         return context
